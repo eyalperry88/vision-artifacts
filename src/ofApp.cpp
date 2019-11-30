@@ -4,7 +4,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 
-  ofSetWindowPosition(PROJECTION_SCREEN_OFFSET, 0); // second screen - projector
+  // ofSetWindowPosition(PROJECTION_SCREEN_OFFSET, 0); // second screen - projector
 
   ofHideCursor();
 
