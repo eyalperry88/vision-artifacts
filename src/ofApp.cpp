@@ -127,9 +127,9 @@ void ofApp::update(){
           b /= BUFFER_SIZE;
 
           h = 0;
-          s = 0;
+          s = 127;
 
-          b = 127 - (b - avgB);
+          //b = 127 - (b - avgB);
 
           b *= 0.66;
 
@@ -155,7 +155,7 @@ void ofApp::draw(){
   ofScale(1.0, 1.0);
   ofPopMatrix();
 
-  
+
   ofPushMatrix();
   ofTranslate(50, 480);
   ofRotateDeg(90.0);
