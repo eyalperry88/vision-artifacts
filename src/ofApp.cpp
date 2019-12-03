@@ -4,7 +4,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 
-  // ofSetWindowPosition(PROJECTION_SCREEN_OFFSET, 0); // second screen - projector
+  //ofSetWindowPosition(PROJECTION_SCREEN_OFFSET, 0); // second screen - projector
 
   ofHideCursor();
 
@@ -42,6 +42,7 @@ void ofApp::setup(){
       }
     }
   }
+
   bufferIdx = 0;
   ready = false;
   videoTexture.allocate(pixCaptured);
@@ -56,6 +57,20 @@ void ofApp::setup(){
   textIndex = 0;
   appear = 0;
   appearStep = 2;
+
+
+    int centerX = CAM_WIDTH / 2;
+    int centerY = CAM_HEIGHT / 2;
+    for(int i = 0; i < CAM_WIDTH; i++){
+      for(int j = 0; j < CAM_HEIGHT; j++){
+        if (pow(i - centerX, 2) + pow(j - centerY, 2) > pow(captureRadius, 2)) {
+          pixCaptured.setColor(i, j, ofColor(0, 0, 0));
+        } else {
+          pixCaptured.setColor(i, j, ofColor(200, 200, 200));
+        }
+      }
+    }
+    videoTexture.loadData(pixCaptured);
 
 }
 
@@ -106,6 +121,7 @@ void ofApp::update(){
 
     int centerX = CAM_WIDTH / 2;
     int centerY = CAM_HEIGHT / 2;
+
     for(int i = 0; i < CAM_WIDTH; i++){
       for(int j = 0; j < CAM_HEIGHT; j++){
         if (pow(i - centerX, 2) + pow(j - centerY, 2) > pow(captureRadius, 2)) {
@@ -130,7 +146,7 @@ void ofApp::update(){
           s = 0;
 
           b = 127 - (b - avgB);
-
+          //b = 255;
           b *= 0.66;
 
           ofColor newC = ofColor::fromHsb(h, s, b);
