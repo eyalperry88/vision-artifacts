@@ -127,9 +127,9 @@ void ofApp::update(){
           b /= BUFFER_SIZE;
 
           h = 0;
-          s = 127;
+          s = 0;
 
-          //b = 127 - (b - avgB);
+          b = 127 - (b - avgB);
 
           b *= 0.66;
 
