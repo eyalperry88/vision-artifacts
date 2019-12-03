@@ -50,12 +50,12 @@ void ofApp::setup(){
   captureRadius = 200;
   scale = 2.4;
 
-  // texts[0].load("cast.png");
-  // texts[1].load("a.png");
-  // texts[2].load("shadow.png");
-  // textIndex = 0;
-  // appear = 0;
-  // appearStep = 2;
+  texts[0].load("cast.png");
+  texts[1].load("a.png");
+  texts[2].load("shadow.png");
+  textIndex = 0;
+  appear = 0;
+  appearStep = 2;
 
 }
 
@@ -63,11 +63,11 @@ void ofApp::setup(){
 void ofApp::update(){
   vidGrabber.update();
 
-  // appear += appearStep;
-  // if (appear > 255) {
-  //   appear = 0;
-  //   textIndex = (textIndex + 1) % 3;
-  // }
+  appear += appearStep;
+  if (appear > 255) {
+    appear = 0;
+    textIndex = (textIndex + 1) % 3;
+  }
 
   if(vidGrabber.isFrameNew()){
     ofPixels & pixels = vidGrabber.getPixels();
@@ -155,17 +155,17 @@ void ofApp::draw(){
   ofScale(1.0, 1.0);
   ofPopMatrix();
 
-  //
-  // ofPushMatrix();
-  // ofTranslate(50, 480);
-  // ofRotateDeg(90.0);
-  // ofEnableAlphaBlending();
-  // ofSetColor(255, 255, 255, max(0, 255 - 2 * appear));
-  // texts[(textIndex + 2) % 3].draw(0, 0);
-  // ofSetColor(255, 255, 255, appear);
-  // texts[textIndex].draw(0, 0);
-  // ofDisableAlphaBlending();
-  // ofPopMatrix();
+  
+  ofPushMatrix();
+  ofTranslate(50, 480);
+  ofRotateDeg(90.0);
+  ofEnableAlphaBlending();
+  ofSetColor(255, 255, 255, max(0, 255 - 2 * appear));
+  texts[(textIndex + 2) % 3].draw(0, 0);
+  ofSetColor(255, 255, 255, appear);
+  texts[textIndex].draw(0, 0);
+  ofDisableAlphaBlending();
+  ofPopMatrix();
 }
 
 
