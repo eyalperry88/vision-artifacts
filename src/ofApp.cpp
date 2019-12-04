@@ -4,7 +4,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 
-  //ofSetWindowPosition(PROJECTION_SCREEN_OFFSET, 0); // second screen - projector
+  ofSetWindowPosition(PROJECTION_SCREEN_OFFSET, 0); // second screen - projector
 
   ofHideCursor();
 
@@ -18,17 +18,21 @@ void ofApp::setup(){
   //get back a list of devices.
   vector<ofVideoDevice> devices = vidGrabber.listDevices();
 
+  int deviceID = 0;
   for(size_t i = 0; i < devices.size(); i++){
       if(devices[i].bAvailable){
           //log the device
           ofLogNotice() << devices[i].id << ": " << devices[i].deviceName;
+          if (devices[i].deviceName != "Built-in Sight") {
+            deviceID = i;
+          }
       }else{
           //log the device and note it as unavailable
           ofLogNotice() << devices[i].id << ": " << devices[i].deviceName << " - unavailable ";
       }
   }
 
-  vidGrabber.setDeviceID(0);
+  vidGrabber.setDeviceID(deviceID);
   vidGrabber.setDesiredFrameRate(30);
   vidGrabber.initGrabber(CAM_WIDTH, CAM_HEIGHT);
 
@@ -57,7 +61,7 @@ void ofApp::setup(){
   textIndex = 0;
   appear = 0;
   appearStep = 2;
-    // 
+    //
     //
     // int centerX = CAM_WIDTH / 2;
     // int centerY = CAM_HEIGHT / 2;
