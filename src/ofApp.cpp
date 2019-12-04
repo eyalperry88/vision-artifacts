@@ -23,7 +23,7 @@ void ofApp::setup(){
       if(devices[i].bAvailable){
           //log the device
           ofLogNotice() << devices[i].id << ": " << devices[i].deviceName;
-          if (devices[i].deviceName != "Built-in Sight") {
+          if (devices[i].deviceName != "Built-in iSight") {
             deviceID = i;
           }
       }else{
@@ -31,6 +31,7 @@ void ofApp::setup(){
           ofLogNotice() << devices[i].id << ": " << devices[i].deviceName << " - unavailable ";
       }
   }
+  ofLogNotice() << "Connecting to device " << deviceID;
 
   vidGrabber.setDeviceID(deviceID);
   vidGrabber.setDesiredFrameRate(30);
