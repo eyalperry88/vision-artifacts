@@ -7,7 +7,7 @@
 #define PROJECTION_SCREEN_HEIGHT 800
 #define CAM_WIDTH 640
 #define CAM_HEIGHT 480
-#define BUFFER_SIZE 30
+#define BUFFER_SIZE 25
 
 class ofApp : public ofBaseApp{
 

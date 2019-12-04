@@ -53,8 +53,10 @@ void ofApp::setup(){
   videoTexture.allocate(pixCaptured);
   ofSetVerticalSync(false);
 
-  captureRadius = 200;
-  scale = 2.4;
+  // captureRadius = 200;
+  // scale = 2.4;
+  captureRadius = 209;
+  scale = 1.9;
 
   texts[0].load("cast.png");
   texts[1].load("a.png");
@@ -169,7 +171,7 @@ void ofApp::draw(){
 
   ofPushMatrix();
   ofSetHexColor(0xffffff);
-  ofTranslate(CAM_WIDTH, CAM_HEIGHT);
+  ofTranslate(CAM_WIDTH, 400); // Why is this 400 and not CAM_HEIGHT?
   ofRotateDeg(60.0);
   ofScale(scale, scale);
   videoTexture.draw(0, 0, CAM_WIDTH, CAM_HEIGHT);
